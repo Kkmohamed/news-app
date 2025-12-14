@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/features/home/components/categories_list.dart';
+import 'package:news_app/features/home/components/top_headline.dart';
+import 'package:news_app/features/home/components/trending_news.dart';
+
 import 'package:news_app/features/home/controller/home_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -7,27 +11,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<HomeController>(
+    return ChangeNotifierProvider(
       create: (context) => HomeController(),
       child: Consumer<HomeController>(
         builder: (context, HomeController controller, child) {
           return Scaffold(
-            body:
-                (controller.errorMessage?.isNotEmpty ?? false)
-                    ? Center(child: Text(controller.errorMessage!))
-                    : controller.everythingLoading
-                    ? const Center(child: CircularProgressIndicator())
-                    : ListView.builder(
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(
-                            controller.newsEverythingList[index].title ??
-                                'No Title',
-                          ),
-                        );
-                      },
-                      itemCount: controller.newsEverythingList.length,
-                    ),
+            body: CustomScrollView(
+              slivers: [
+                TrendingNews(),
+      
+                CategoriesList(),
+                SliverToBoxAdapter(child: SizedBox(height: 16)),
+                TopHeadline(),
+              ],
+            ),
           );
         },
       ),

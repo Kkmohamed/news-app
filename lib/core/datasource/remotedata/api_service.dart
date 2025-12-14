@@ -9,7 +9,7 @@ class ApiService {
       'apiKey': ApiConfig.apiKey,
       ...?params,
     });
-
+  
     try {
       final response = await http.get(url);
       return jsonDecode(response.body);

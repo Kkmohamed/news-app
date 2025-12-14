@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/datasource/remotedata/api_config.dart';
 import 'package:news_app/core/datasource/remotedata/api_service.dart';
+import 'package:news_app/core/enums/request_status_enum.dart';
+import 'package:news_app/features/home/components/categories_list.dart';
 import 'package:news_app/features/home/models/news_article_model.dart';
 
 class HomeController with ChangeNotifier {
@@ -8,28 +10,33 @@ class HomeController with ChangeNotifier {
     getTopHeadLine();
     getEverything();
   }
-  bool topHeadlinesLoading = true;
-  bool everythingLoading = true;
+  RequestStatusEnum everythingStaus = RequestStatusEnum.loading;
+  RequestStatusEnum topHeadlinesStaus = RequestStatusEnum.loading;
+
   String? errorMessage;
   List<NewsArticleModel> newsTopHeadLineList = [];
   List<NewsArticleModel> newsEverythingList = [];
+
+  String selectedCategory = categories[0];
+
   ApiService apiService = ApiService();
-  void getTopHeadLine() async {
+
+  void getTopHeadLine({String? category}) async {
     try {
       Map<String, dynamic> data = await apiService.get(
         ApiConfig.topHeadlines,
-        params: {'country': 'us'},
+        params: {'country': 'us', "category": selectedCategory},
       );
 
       newsTopHeadLineList =
           (data['articles'] as List)
               .map((article) => NewsArticleModel.fromJson(article))
               .toList();
-      topHeadlinesLoading = false;
+      topHeadlinesStaus = RequestStatusEnum.loaded;
       errorMessage = null;
     } catch (e) {
       errorMessage = e.toString();
-      topHeadlinesLoading = false;
+      topHeadlinesStaus = RequestStatusEnum.error;
     }
     notifyListeners();
   }
@@ -44,12 +51,19 @@ class HomeController with ChangeNotifier {
           (data['articles'] as List)
               .map((article) => NewsArticleModel.fromJson(article))
               .toList();
-      everythingLoading = false;
+      everythingStaus = RequestStatusEnum.loaded;
       errorMessage = null;
     } catch (e) {
-      everythingLoading = false;
+      everythingStaus = RequestStatusEnum.error;
       errorMessage = e.toString();
     }
     notifyListeners();
   }
+
+  void updateSelectedCategory(String category) {
+    selectedCategory = category;
+    getTopHeadLine(category: category);
+    notifyListeners();
+  }
 }
+  

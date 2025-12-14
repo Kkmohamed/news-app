@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/datasource/localdata/preferences_manager.dart';
 import 'package:news_app/core/theme/light_theme.dart';
+
 import 'package:news_app/features/splash/splash_screen.dart';
 
+
 void main() async {
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await PreferencesManager().init();
-  runApp(NewsApp());
+  // await PreferencesManager().clear();
+  runApp(
+    NewsApp(),
+  );
 }
 
 class NewsApp extends StatelessWidget {
