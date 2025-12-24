@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/constants/app_sizes.dart';
 import 'package:news_app/core/datasource/localdata/preferences_manager.dart';
 import 'package:news_app/core/widgets/custom_text_form_field.dart';
 import 'package:news_app/features/auth/register_screen.dart';
@@ -76,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: EdgeInsets.symmetric(horizontal: AppSizes.pw16),
             child: Form(
               key: _formKey,
               child: Column(
@@ -86,15 +87,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   Center(
                     child: Image.asset(
                       'assets/images/app_logo.png',
-                      height: 45,
+                      height: AppSizes.h45,
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  const Text(
+                  SizedBox(height: AppSizes.ph24),
+                  Text(
                     'Welcome to Newts',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                      fontSize: AppSizes.sp20,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: AppSizes.ph24),
                   CustomTextFormField(
                     keyboardType: TextInputType.emailAddress,
                     obscureText: false,
@@ -114,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: AppSizes.ph24),
                   CustomTextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -133,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     hintText: '*************',
                     title: 'Password',
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: AppSizes.ph24),
                   if (errorMessage != null)
                     Text(
                       errorMessage ?? '',
@@ -142,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   SizedBox(
                     width: double.infinity,
-                    height: 48,
+                    height: AppSizes.h48,
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
@@ -155,15 +159,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               : Text('Sign In'),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: AppSizes.ph24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         "Don't have an account ?",
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: AppSizes.sp16),
                       ),
-                      const SizedBox(width: 8),
+                      SizedBox(width: AppSizes.pw8),
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(
@@ -176,7 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           'Sign Up',
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
-                            fontSize: 16,
+                            fontSize: AppSizes.sp16,
                           ),
                         ),
                       ),

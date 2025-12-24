@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/constants/app_sizes.dart';
 import 'package:news_app/core/theme/light_color.dart';
 
 ThemeData lightTheme = ThemeData(
@@ -61,6 +62,7 @@ ThemeData lightTheme = ThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: LightColor.primary,
       foregroundColor: Color(0xFFFFFCFC),
+      minimumSize: Size.fromHeight(AppSizes.h52),
       textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
     ),

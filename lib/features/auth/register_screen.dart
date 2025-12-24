@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/constants/app_sizes.dart';
 import 'package:news_app/core/datasource/localdata/preferences_manager.dart';
 import 'package:news_app/core/widgets/custom_text_form_field.dart';
 import 'package:news_app/features/auth/login_screen.dart';
@@ -75,7 +76,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: EdgeInsets.symmetric(horizontal: AppSizes.pw16),
             child: Form(
               key: _formKey,
               child: Column(
@@ -85,15 +86,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Center(
                     child: Image.asset(
                       'assets/images/app_logo.png',
-                      height: 45,
+                      height: AppSizes.h45,
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  const Text(
+                  SizedBox(height: AppSizes.ph24),
+                  Text(
                     'Welcome to Newts',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                      fontSize: AppSizes.sp20,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: AppSizes.ph24),
                   CustomTextFormField(
                     keyboardType: TextInputType.emailAddress,
                     obscureText: false,
@@ -113,7 +117,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: AppSizes.ph24),
                   CustomTextFormField(
                     obscureText: !isVisible,
                     controller: passwordController,
@@ -133,7 +137,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                   ),
 
-                  const SizedBox(height: 24),
+                  SizedBox(height: AppSizes.ph24),
                   CustomTextFormField(
                     obscureText: !isVisible,
                     controller: confirmPasswordController,
@@ -152,15 +156,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       return null;
                     },
                   ),
-                  if (errorMessage != null) const SizedBox(height: 24),
+                  if (errorMessage != null) SizedBox(height: AppSizes.ph24),
                   Text(
                     errorMessage ?? '',
-                    style: TextStyle(color: Colors.red, fontSize: 16),
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: AppSizes.sp16,
+                    ),
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: AppSizes.ph24),
                   SizedBox(
                     width: double.infinity,
-                    height: 48,
+                    height: AppSizes.h48,
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
@@ -173,15 +180,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               : const Text('Sign Up'),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: AppSizes.ph24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         "Have an account ?",
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: AppSizes.sp16),
                       ),
-                      const SizedBox(width: 8),
+                      SizedBox(height: AppSizes.ph8),
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).pop();
@@ -190,7 +197,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           'Sign In',
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
-                            fontSize: 16,
+                            fontSize: AppSizes.sp16,
                           ),
                         ),
                       ),
