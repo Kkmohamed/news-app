@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/constants/app_sizes.dart';
 import 'package:shimmer/shimmer.dart';
 
 class TrendingNewsShimmer extends StatelessWidget {
@@ -8,16 +9,19 @@ class TrendingNewsShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       physics: BouncingScrollPhysics(),
-
       scrollDirection: Axis.horizontal,
       itemCount: 6,
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          padding: EdgeInsets.symmetric(horizontal: AppSizes.pw12),
           child: Shimmer.fromColors(
             highlightColor: Colors.grey.shade100,
             baseColor: Colors.grey.shade300,
-            child: Container(width: 240, height: 140, color: Colors.white),
+            child: Container(
+              width: AppSizes.w240,
+              height: AppSizes.h140,
+              color: Colors.white,
+            ),
           ),
         );
       },

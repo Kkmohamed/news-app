@@ -19,7 +19,6 @@ class HomeScreen extends StatelessWidget {
             body: CustomScrollView(
               slivers: [
                 TrendingNews(),
-      
                 CategoriesList(),
                 SliverToBoxAdapter(child: SizedBox(height: 16)),
                 TopHeadline(),
