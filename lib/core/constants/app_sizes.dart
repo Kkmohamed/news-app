@@ -18,7 +18,10 @@ class AppSizes {
   static final double h8 = 8.h;
   static final double h6 = 6.h;
   static final double h16 = 16.h;
+  static final double h18 = 18.h;
+  static final double h20 = 20.h;
   static final double h24 = 24.h;
+  static final double h28 = 28.h;
   static final double h32 = 32.h;
   static final double h40 = 40.h;
   static final double h42 = 42.h;
@@ -38,6 +41,7 @@ class AppSizes {
   static final double w2 = 2.w;
   static final double w8 = 8.w;
   static final double w16 = 16.w;
+  static final double w20 = 20.w;
   static final double w24 = 24.w;
   static final double w42 = 42.w;
   static final double w45 = 45.w;

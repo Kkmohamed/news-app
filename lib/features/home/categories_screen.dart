@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:news_app/core/extensions/date_time_extension.dart';
+import 'package:news_app/core/constants/app_sizes.dart';
 
 import 'package:news_app/core/theme/light_color.dart';
-import 'package:news_app/core/widgets/custom_cached_network_image.dart';
 
 import 'package:news_app/features/home/components/categories_list.dart';
 import 'package:news_app/features/home/components/news_item.dart';
@@ -18,7 +15,11 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: Text('Categories')),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Categories'),
+        backgroundColor: Colors.white,
+      ),
       body: Consumer<HomeController>(
         builder: (BuildContext context, controller, Widget? child) {
           return Column(
@@ -26,14 +27,13 @@ class CategoriesScreen extends StatelessWidget {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
+                    padding: EdgeInsets.only(left: AppSizes.pw16),
                     child: SizedBox(
-                      height: 32,
+                      height: AppSizes.h32,
                       child: ListView.separated(
                         padding: EdgeInsets.zero,
                         separatorBuilder:
-                            (context, index) => SizedBox(width: 12),
-
+                            (context, index) => SizedBox(width: AppSizes.pw12),
                         physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         itemCount: categories.length,
@@ -57,7 +57,7 @@ class CategoriesScreen extends StatelessWidget {
                                           isSelected
                                               ? LightColor.primary
                                               : Color(0xFF363636),
-                                      fontSize: 18,
+                                      fontSize: AppSizes.sp18,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -79,7 +79,7 @@ class CategoriesScreen extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(height: 16),
+              SizedBox(height: AppSizes.ph16),
               Expanded(
                 child: ListView.builder(
                   itemCount: controller.newsTopHeadLineList.take(15).length,

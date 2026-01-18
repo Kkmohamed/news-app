@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/constants/app_sizes.dart';
 import 'package:news_app/core/theme/light_color.dart';
 
 import 'package:news_app/features/home/components/view_all_component.dart';
@@ -21,9 +22,9 @@ class CategoriesList extends StatelessWidget {
                 onTap: () {},
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16.0),
+                padding: EdgeInsets.only(left: AppSizes.pw16),
                 child: SizedBox(
-                  height: 32,
+                  height: AppSizes.h32,
                   child: ListView.separated(
                     padding: EdgeInsets.zero,
                     separatorBuilder: (context, index) => SizedBox(width: 12),
@@ -49,7 +50,7 @@ class CategoriesList extends StatelessWidget {
                                       isSelected
                                           ? LightColor.primary
                                           : Color(0xFF363636),
-                                  fontSize: 18,
+                                  fontSize: AppSizes.sp18,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),

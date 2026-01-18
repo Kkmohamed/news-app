@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/constants/app_sizes.dart';
 import 'package:shimmer/shimmer.dart';
 
 class TopHeadlineShimmer extends StatelessWidget {
@@ -14,11 +15,15 @@ class TopHeadlineShimmer extends StatelessWidget {
           return Shimmer.fromColors(
             highlightColor: Colors.grey.shade100,
             baseColor: Colors.grey.shade300,
-            child: Container(width: 122, height: 75, color: Colors.white),
+            child: Container(
+              width: AppSizes.w122,
+              height: AppSizes.h75,
+              color: Colors.white,
+            ),
           );
         },
       ),
     );
-    ;
+    
   }
 }
